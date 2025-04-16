@@ -1,21 +1,24 @@
 package Polaznik;
+import com.sun.source.tree.NewArrayTree;
+
 import java.util.*;
 
 public class Zadatak2 {
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        HashSet<Polaznik> polazniciHashSet = new HashSet<>();
-        TreeSet<Polaznik> polazniciTreeSet = new TreeSet<>();
+        List<? extends AbstractSet<Polaznik>> polaznikSetovi = Arrays.asList(
+                new HashSet<Polaznik>(),
+                new TreeSet<Polaznik>()
+        );
 
-        mainLoop(polazniciHashSet, "Unos hash set");
-        mainLoop(polazniciTreeSet, "Unos tree set");
+        polaznikSetovi.forEach(s -> mainLoop(s));
 
         scanner.close();
         System.out.println("Kraj.");
     }
 
-    public static void mainLoop(Set<Polaznik> polaznici, String unosText) {
-        System.out.println(unosText);
+    public static void mainLoop(Set<Polaznik> polaznici) {
+        System.out.println("unos "+polaznici.getClass().getSimpleName()+ " polaznika");
         do {
             tryUnos(polaznici);
             System.out.println("Nastaviti D?");
