@@ -7,33 +7,27 @@ public class Zadatak2 {
         HashSet<Polaznik> polazniciHashSet = new HashSet<>();
         TreeSet<Polaznik> polazniciTreeSet = new TreeSet<>();
 
-        System.out.println("Unos hash set");
-        while (true) {
-            try {
-                unosPolaznika(polazniciHashSet);
-                ispisiPolaznike(polazniciHashSet);
-            } catch (Exception e) {
-                System.out.println("Greska, probajte ponovno");
-            }
-            System.out.println("Nastaviti D?");
-            if (!scanner.nextLine().equals("D")) break;
-        }
+        mainLoop(polazniciHashSet, "Unos hash set");
+        mainLoop(polazniciTreeSet, "Unos tree set");
 
-        System.out.println("Unos tree set");
-        while (true) {
-            try {
-                unosPolaznika(polazniciTreeSet);
-                ispisiPolaznike(polazniciTreeSet);
-            } catch (Exception e) {
-                System.out.println("Greska, probajte ponovno");
-            }
-            System.out.println("Nastaviti D?");
-            if (!scanner.nextLine().equals("D")) break;
-        }
         scanner.close();
         System.out.println("Kraj.");
     }
 
+    public static void mainLoop(Set<Polaznik> polaznici, String unosText) {
+        System.out.println(unosText);
+        while (true) {
+            try {
+                unosPolaznika(polaznici);
+                ispisiPolaznike(polaznici);
+            } catch (Exception e) {
+                System.out.println("Greska, probajte ponovno");
+            }
+            System.out.println("Nastaviti D?");
+            if (!scanner.nextLine().equals("D")) break;
+        }
+        System.out.println();
+    }
 
     public static  void unosPolaznika(Set<Polaznik> polaznici) {
         System.out.println("Unesite polaznika (Ime Prezime Email):");
