@@ -1,7 +1,4 @@
 package Polaznik;
-
-import com.sun.source.tree.Tree;
-
 import java.util.*;
 
 public class Zadatak2 {
@@ -38,7 +35,7 @@ public class Zadatak2 {
     }
 
 
-    public static  void unosPolaznika(HashSet<Polaznik> polaznici) {
+    public static  void unosPolaznika(Set<Polaznik> polaznici) {
         System.out.println("Unesite polaznika (Ime Prezime Email):");
         String linija = scanner.nextLine();
         List<String> linijaList = Arrays.stream(linija.split(" ")).toList();
@@ -47,34 +44,14 @@ public class Zadatak2 {
         String email = linijaList.get(2);
         Polaznik p = new Polaznik(ime, prezime, email);
 
-        for (Polaznik polaznik : polaznici) {
-            if (p.equals(polaznik)) {
-                System.out.println("Korisnik vec postoji");
-                return;
-            }
+        if (polaznici.contains(p)) {
+            System.out.println("Korisnik vec postoji");
+            return;
         }
 
         polaznici.add(p);
     }
 
-    public static  void unosPolaznika(TreeSet<Polaznik> polaznici) {
-        System.out.println("Unesite polaznika (Ime Prezime Email):");
-        String linija = scanner.nextLine();
-        List<String> linijaList = Arrays.stream(linija.split(" ")).toList();
-        String ime = linijaList.get(0);
-        String prezime = linijaList.get(1);
-        String email = linijaList.get(2);
-        Polaznik p = new Polaznik(ime, prezime, email);
-
-        for (Polaznik polaznik : polaznici) {
-            if (p.equals(polaznik)) {
-                System.out.println("Korisnik vec postoji");
-                return;
-            }
-        }
-
-        polaznici.add(p);
-    }
 
     public static void ispisiPolaznike(Set<Polaznik> polaznici) {
         polaznici.forEach(p-> System.out.println(p));
