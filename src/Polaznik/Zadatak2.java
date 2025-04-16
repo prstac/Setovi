@@ -17,37 +17,48 @@ public class Zadatak2 {
     public static void mainLoop(Set<Polaznik> polaznici, String unosText) {
         System.out.println(unosText);
         do {
-            try {
-                unosPolaznika(polaznici);
-                ispisiPolaznike(polaznici);
-            } catch (Exception e) {
-                System.out.println("Greska, probajte ponovno");
-            }
+            tryUnos(polaznici);
             System.out.println("Nastaviti D?");
         } while (scanner.nextLine().equalsIgnoreCase("d"));
         System.out.println();
     }
 
+    public static void tryUnos(Set<Polaznik> polaznici) {
+        try {
+            unosPolaznika(polaznici);
+            ispisiPolaznike(polaznici);
+        } catch (Exception e) {
+            System.out.println("Greska, probajte ponovno");
+        }
+    }
+
     public static  void unosPolaznika(Set<Polaznik> polaznici) {
         System.out.println("Unesite polaznika (Ime Prezime Email):");
-        String linija = scanner.nextLine();
-        List<String> linijaList = Arrays.stream(linija.split(" ")).toList();
-        String ime = linijaList.get(0);
-        String prezime = linijaList.get(1);
-        String email = linijaList.get(2);
-        Polaznik p = new Polaznik(ime, prezime, email);
 
-        if (polaznici.contains(p)) {
+        Polaznik polaznik = getPolaznikFromLine(scanner.nextLine());
+
+        if (polaznici.contains(polaznik)) {
             System.out.println("Korisnik vec postoji");
             return;
         }
 
-        polaznici.add(p);
+        polaznici.add(polaznik);
+    }
+
+    public static Polaznik getPolaznikFromLine(String linija) {
+        List<String> linijaList = Arrays.stream(linija.split(" ")).toList();
+
+        String ime = linijaList.get(0);
+        String prezime = linijaList.get(1);
+        String email = linijaList.get(2);
+
+        return new Polaznik(ime,prezime,email);
     }
 
 
     public static void ispisiPolaznike(Set<Polaznik> polaznici) {
-        polaznici.forEach(p-> System.out.println(p));
+        System.out.println("Polaznici su:");
+        polaznici.forEach(System.out::println);
     }
 
 }
