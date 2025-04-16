@@ -16,7 +16,7 @@ public class Zadatak2 {
 
     public static void mainLoop(Set<Polaznik> polaznici, String unosText) {
         System.out.println(unosText);
-        while (true) {
+        do {
             try {
                 unosPolaznika(polaznici);
                 ispisiPolaznike(polaznici);
@@ -24,8 +24,7 @@ public class Zadatak2 {
                 System.out.println("Greska, probajte ponovno");
             }
             System.out.println("Nastaviti D?");
-            if (!scanner.nextLine().equals("D")) break;
-        }
+        } while (scanner.nextLine().equalsIgnoreCase("d"));
         System.out.println();
     }
 
