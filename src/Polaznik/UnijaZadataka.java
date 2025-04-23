@@ -20,7 +20,7 @@ public class UnijaZadataka {
 
     public static void printIzbornik(List<Registar<Polaznik>> registri) {
         for (int i = 1; i <= registri.size() ; i++) {
-            System.out.println(i + " za "+ registri.get(i-1).getClass().getSimpleName());
+            System.out.println(i + " za "+ registri.get(i-1).getDataClassName());
         }
     }
 

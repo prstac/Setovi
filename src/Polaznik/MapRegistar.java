@@ -30,4 +30,8 @@ public class MapRegistar implements Registar<Polaznik>{
     public boolean elementExists(Polaznik p) {
         return data.containsKey(p.Email);
     }
+
+    public String getDataClassName() {
+        return data.getClass().getSimpleName();
+    }
 }

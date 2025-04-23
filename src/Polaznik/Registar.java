@@ -6,5 +6,6 @@ public interface Registar<T> {
     void printAllElements();
     void printAllElementsRandom();
     boolean elementExists(T e);
+    String getDataClassName();
 
 }

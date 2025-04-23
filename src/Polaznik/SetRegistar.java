@@ -28,4 +28,9 @@ public class SetRegistar implements Registar<Polaznik>{
     public boolean elementExists(Polaznik p) {
         return data.contains(p);
     }
+
+    @Override
+    public String getDataClassName() {
+        return data.getClass().getSimpleName();
+    }
 }
