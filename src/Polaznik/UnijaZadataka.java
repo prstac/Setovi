@@ -34,7 +34,7 @@ public class UnijaZadataka {
         var polaznici = registriPolaznika.get(izbor - 1);
 
 
-        System.out.println("unos "+polaznici.getClass().getSimpleName()+ " polaznika");
+        System.out.println("unos "+polaznici.getDataClassName() + " polaznika");
         do {
             tryUnos(polaznici);
             System.out.println("Nastaviti D?");
