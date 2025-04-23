@@ -18,11 +18,10 @@ public class UnijaZadataka {
         System.out.println("Kraj.");
     }
 
-    public static void printIzbornik() {
-        System.out.println("1 za hash set");
-        System.out.println("2 za tree set");
-        System.out.println("3 za hash map");
-        System.out.println("4 za tree map");
+    public static void printIzbornik(List<Registar> registri) {
+        for (int i = 1; i <= registri.size() ; i++) {
+            System.out.println(i + " za "+ registri.get(i-1).getClass().getSimpleName());
+        }
     }
 
     public static void mainLoop(List<Registar<Polaznik>> registriPolaznika) {
