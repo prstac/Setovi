@@ -53,17 +53,17 @@ public class UnijaZadataka {
         }
     }
 
-    public static  void unosPolaznika(Registar<Polaznik> polaznici) {
+    public static  void unosPolaznika(Registar<Polaznik> registarPolaznika) {
         System.out.println("Unesite polaznika (Ime Prezime Email):");
 
         Polaznik polaznik = getPolaznikFromLine(scanner.nextLine());
 
-        if (polaznici.elementExists(polaznik)) {
+        if (registarPolaznika.elementExists(polaznik)) {
             System.out.println("Korisnik vec postoji");
             return;
         }
 
-        polaznici.add(polaznik);
+        registarPolaznika.add(polaznik);
     }
 
     public static Polaznik getPolaznikFromLine(String linija) {
