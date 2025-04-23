@@ -18,7 +18,7 @@ public class UnijaZadataka {
         System.out.println("Kraj.");
     }
 
-    public static void printIzbornik(List<Registar> registri) {
+    public static void printIzbornik(List<Registar<Polaznik>> registri) {
         for (int i = 1; i <= registri.size() ; i++) {
             System.out.println(i + " za "+ registri.get(i-1).getClass().getSimpleName());
         }
@@ -26,7 +26,7 @@ public class UnijaZadataka {
 
     public static void mainLoop(List<Registar<Polaznik>> registriPolaznika) {
 
-        printIzbornik();
+        printIzbornik(registriPolaznika);
 
         var izbor = scanner.nextInt();
         scanner.nextLine();
