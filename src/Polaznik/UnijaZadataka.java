@@ -6,10 +6,10 @@ public class UnijaZadataka {
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         List<Registar<Polaznik>> polaznikRegistri = Arrays.asList(
-                new SetRegistar(new HashSet<Polaznik>()),
-                new SetRegistar(new TreeSet<Polaznik>()),
-                new MapRegistar(new HashMap < String, Polaznik > ()),
-                new MapRegistar(new TreeMap < String, Polaznik > ())
+                new SetRegistar<Polaznik>(new HashSet<>()),
+                new SetRegistar<Polaznik>(new TreeSet<>()),
+                new MapRegistar<Polaznik>(new HashMap <> (), "getEmail"),
+                new MapRegistar<Polaznik>(new TreeMap <> (), "getEmail")
         );
 
         mainLoop(polaznikRegistri);

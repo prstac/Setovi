@@ -1,31 +1,32 @@
 package Polaznik;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-public class SetRegistar implements Registar<Polaznik>{
-    Set<Polaznik> data;
+public class SetRegistar<T> implements Registar<T>{
+    Set<T> data;
 
-    public SetRegistar(Set<Polaznik> data) {
+    public SetRegistar(Set<T> data) {
         this.data = data;
     }
 
-    public void add(Polaznik element) {
+    public void add(T element) {
         data.add(element);
     }
 
     public void printAllElements() {
-        data.forEach(p -> System.out.println(p));
+        data.forEach(System.out::println);
     }
 
     public void printAllElementsRandom() {
-        List<Polaznik> values = new ArrayList<Polaznik>(data);
+        List<T> values = new ArrayList<T>(data);
         Collections.shuffle(values);
         values.forEach(System.out::println);
     }
 
-    public boolean elementExists(Polaznik p) {
+    public boolean elementExists(T p) {
         return data.contains(p);
     }
 
