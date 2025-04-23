@@ -1,0 +1,10 @@
+Napiši program za evidenciju polaznika na tečaju koji osigurava jedinstvenost e-mail adresa polaznika te nasumično mijenja redoslijed polaznika prije ispisa. Program treba omogućiti unos polaznika i njihovih podataka, provjeriti jesu li e-mail adrese jedinstvene te ispisati polaznike u nasumičnom redoslijedu.
+
+* Koristi klasu Polaznik s atributima: ime, prezime i e-mail.
+* Koristi HashMap<String, Polaznik> za pohranu polaznika, gdje je ključ e-mail adresa, a vrijednost objekt klase Polaznik.
+* Napravi glavnu klasu EvidencijaPolaznika koja sadrži main metodu.
+* Omogući korisniku unos novih polaznika (ime, prezime, e-mail).
+* Pri dodavanju novog polaznika, provjeri je li e-mail adresa već prisutna u evidenciji. Ako je, ispiši odgovarajuću poruku i ne dopusti unos polaznika s istom e-mail adresom.
+* Nakon unosa svih polaznika, nasumično izmiješaj redoslijed polaznika prije ispisa.
+* Ispiši sve polaznike na tečaju u nasumičnom redoslijedu.
+* Isprobaj ispis nakon korištenja drugih metoda iz klase Collections
