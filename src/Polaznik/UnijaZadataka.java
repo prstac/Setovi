@@ -22,47 +22,59 @@ public class UnijaZadataka {
         for (int i = 1; i <= registri.size() ; i++) {
             System.out.println(i + " za "+ registri.get(i-1).getDataClassName());
         }
+        System.out.println("0 za prekid");
+    }
+
+    public static int izbor() {
+        var izbor = scanner.nextInt();
+        scanner.nextLine();
+        return izbor;
     }
 
     public static void mainLoop(List<Registar<Polaznik>> registriPolaznika) {
-
-        printIzbornik(registriPolaznika);
-
-        var izbor = scanner.nextInt();
-        scanner.nextLine();
-
-        var polaznici = registriPolaznika.get(izbor - 1);
-
-
-        System.out.println("unos "+polaznici.getDataClassName() + " polaznika");
+        var izbor = 1;
         do {
-            tryUnos(polaznici);
-            System.out.println("Nastaviti D?");
-        } while (scanner.nextLine().equalsIgnoreCase("d"));
+            printIzbornik(registriPolaznika);
+            izbor = izbor();
+            var polaznici = registriPolaznika.get(0);
+            if (izbor > 0) {
+                polaznici = registriPolaznika.get(izbor - 1);
+                System.out.println("unos "+ polaznici.getDataClassName() + " polaznika, q za prekid");
+            } else break;
+            do {} while (tryUnos(polaznici));
+            System.out.println("Nastaviti s novim izborom, D?");
+        } while (scanner.nextLine().equalsIgnoreCase("D"));
         System.out.println();
     }
 
-    public static void tryUnos(Registar<Polaznik> polaznici) {
+    public static boolean tryUnos(Registar<Polaznik> polaznici) {
+        var nastavi = false;
         try {
-            unosPolaznika(polaznici);
+            nastavi = unosPolaznika(polaznici);
+            if (!nastavi) return nastavi;
             ispisiPolaznike(polaznici);
             ispisiPolaznikeNasumicno(polaznici);
         } catch (Exception e) {
             System.out.println("Greska, probajte ponovno");
         }
+        return nastavi;
     }
 
-    public static  void unosPolaznika(Registar<Polaznik> registarPolaznika) {
+    public static boolean unosPolaznika(Registar<Polaznik> registarPolaznika) {
         System.out.println("Unesite polaznika (Ime Prezime Email):");
+        var line = scanner.nextLine();
 
-        Polaznik polaznik = getPolaznikFromLine(scanner.nextLine());
+        if (line.equalsIgnoreCase("q")) return false;
+        Polaznik polaznik = getPolaznikFromLine(line);
+
 
         if (registarPolaznika.elementExists(polaznik)) {
             System.out.println("Korisnik vec postoji");
-            return;
+            return true;
         }
 
         registarPolaznika.add(polaznik);
+        return true;
     }
 
     public static Polaznik getPolaznikFromLine(String linija) {
